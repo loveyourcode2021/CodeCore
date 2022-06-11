@@ -1,0 +1,3 @@
+let first = process.argv[2]
+let second = process.argv[3]
+let third = process.argv[4]
