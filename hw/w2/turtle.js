@@ -1,4 +1,21 @@
 #! /usr/bin/env node
+const { program } = require('commander');
+
+program
+  .description('A sample application to parse options')
+  .option('-a, --output <VALUE>', 'Specify a VALUE', 'Output')
+
+program.parse();
+
+const options = program.opts();
+
+
+//checking out the input
+const output = !options.output ? 'no' : options.output;
+const drawTxt = !options.output ? 'draw.txt' : options.output;
+const swap = !options.output ? 2 : 3;
+console.log('Options detected:', output);
+
 class Turtle {
     constructor(x, y) {
       this.y = y;
@@ -118,7 +135,7 @@ class Turtle {
     }
     writeIntoFile(){
       const fs = require('fs')
-      var draw = fs.createWriteStream('draw.txt', {flags: 'a' })
+      var draw = fs.createWriteStream(drawTxt, {flags: 'a' })
       var writeLine = (line="\n") => draw.write(`\n${line}`);
       this.lines  = this.lines.split("-")
       var skipFirst = false
@@ -182,10 +199,14 @@ class Turtle {
   $ node ./turtle.js f10-r-r-f10-l-f5-l-f10-r-f5-r-f11
    */
   
-  
-  if(argv.length > 2 )
-  {
-    let commands  = argv[2].split("-")
+
+// check out the command line and switch the index
+
+
+
+if(argv.length > 1 )
+{
+    let commands  = argv[swap].split("-")
     console.log(commands[0].toString())
     let x = 0
     let y = 0
