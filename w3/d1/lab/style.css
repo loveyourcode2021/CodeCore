@@ -1,0 +1,12 @@
+.image-grid{
+    display: grid;
+    grid-template: 150px / auto auto auto;
+}
+.group-image-div{
+    padding: 3rem;
+    background: #f4f4f4;
+    border: red 1px solid;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.4rem;
+}
