@@ -1,0 +1,35 @@
+<% if(cohort && "number-per-team" in cohort[0] === true) {%>
+
+<% let result = [], 
+count = 1, 
+nameList = cohort[0].members.split(","), 
+chunkSize = parseInt(cohort[0]["team-split-quantity"])%>
+<%  const res = [];
+    for (let i = 0; i < nameList.length; i += chunkSize) {
+        const chunk = nameList.slice(i, i + chunkSize);
+        res.push(chunk);
+    } %>
+
+<div class="card">
+  <div class="card-body">
+    <div class="form-group row style:" margin-top:40px">
+      <h5 class="card-title"> #   &nbsp;&nbsp;&nbsp;&nbsp; Members</h5>
+      <div class="row">
+        <div class="col-sm-12 text-left">
+          <% for( let index = 0 ; index < res.length; index++){%>
+
+          <p>
+            <%= count %>. &nbsp;
+            <%= res[index].toString() %>
+          </p>
+    
+        <% count++%>
+        <% }%>
+    </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+  <%}%>
