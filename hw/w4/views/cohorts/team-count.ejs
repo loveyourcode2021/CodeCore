@@ -4,8 +4,15 @@
     nameList = cohort[0].members.split(","), 
     chunkSize = nameList.length/parseInt(cohort[0]["team-split-quantity"]), 
     res = []%>
-
-    <% for (let i = 0 ; i < nameList.length; i+=(chunkSize)) {
+    
+    <% 
+    for (var i = nameList.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * i);
+        var temp = nameList[i];
+        [nameList[i],nameList[j]] = [nameList[j],nameList[i]];
+    }
+   
+    for (let i = 0 ; i < nameList.length; i+=(chunkSize)) {
         res.push(nameList.slice(i, i + chunkSize));
      } %>
 
