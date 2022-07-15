@@ -1,0 +1,18 @@
+<%- include("./partials/header.ejs") %>
+<% if(language === undefined) { %>
+<form action="/select">
+    <label for="type name"> what is your name?</label>
+    <input type="text" id="name" name="name">
+    <% const languages = [{"language":"English", "expression":"Bonjour"},{"language":"Spanish", "expression":"Hola"}] %>
+    <select name="language" id="language">
+        <% for (let lan of languages) { %> 
+             <option value="<%- lan.expression %>">"<%- lan.expression %>"</option>
+        <% } %>     
+    </select>
+    <input type="submit" value="Submit">
+</form>    
+<% } else { %>
+ <h3>  <%- language %> <%- name %> </h3>
+<% } %>   
+<%- include("./partials/footer.ejs") %>
+    
