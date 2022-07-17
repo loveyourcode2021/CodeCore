@@ -1,0 +1,21 @@
+
+body{
+    margin: 1.5em;
+  }
+  .navbar-custom {
+      background-color: #FFFFFF;
+      font-family: 'Roboto', sans-serif;
+      font-family: bold;
+      font-size: 20px;
+  }
+  .navbar-nav {
+      margin-left: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto;
+      
+  }
+  
+  .btn-custom{
+    height:50px;
+  }

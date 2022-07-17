@@ -1,0 +1,30 @@
+<%- include('./partials/header') %>
+
+<%
+
+var years = []
+
+for (var i = 1950; i <= 2022; i++) {
+  years.push(i)
+}
+
+%>
+
+<% if(!year) { %>
+    <form action="/car_status">
+        <div class="container">
+        <label for="years">What is the year</label>
+        <select name="years" id="years">
+            <% for (let ye of years) { %>
+            <option value="<%- ye %>" > <%- ye %> </option>
+            <% } %>   
+        </select>
+        </div>
+
+        <input type= "submit" value="Send">
+    </form>
+<%  } else { %>
+         <h1><%- year %></h1>
+<% } %>
+
+<%- include('./partials/footer') %>

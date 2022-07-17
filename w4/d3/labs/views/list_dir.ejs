@@ -1,0 +1,9 @@
+<%- include('./partials/header.ejs')%>
+<% if(result) { %>
+    <ul class="list-group">
+        <% for(let ele of result) { %>
+            <li class="list-group-item"> <%- ele %></li>
+        <% } %>   
+    </ul>
+<% } %>
+<%- include('./partials/header.ejs')%>

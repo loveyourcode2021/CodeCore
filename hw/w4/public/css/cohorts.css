@@ -1,0 +1,29 @@
+.list-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo-img{
+    border-radius: 50%;
+    width:50px
+}
+
+.card-team-name{
+  font-size: 30px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.name-methods{
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.button-custom{
+  display: grid;
+  grid-template-columns: 45% 10% 45%;
+}
+
+.singleCohort{
+  display:flex;
+  align-items: center;
+  justify-content: center; 
+}

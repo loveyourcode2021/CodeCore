@@ -1,0 +1,64 @@
+<%- include('./partials/header') %>
+
+<%if(isSignIn === false && isClucks == false) {%>
+<div class="card" style="width: 90%;">
+
+  <div class="card-body">
+
+    <form action="/sign_in" method="POST">
+
+
+      <label for="username" class="form-label">Username</label>
+      <input type="text" class="form-control" name="username" id="username" placeholder="e.g. Madam Welminster" />
+      <button type="submit" class="float-center btn btn-primary " ">Sign In</button>
+       
+    </form>
+    
+  </div>
+</div>
+<%}else{%>
+   <% if(isSignIn && isClucks) {%>
+    <div class=" container position-relative">
+    <% if(hash_length > 0 ) {%>
+    <div class="card position-absolute top-0 start-0">          
+            <card-body">
+
+                <h5 class="card-title text-left">Total Hash Tags</h5>
+                <div "card-text">
+                <% for (const property in hashFreq) {%>
+                    <p class="text-left"> <%= `${property} : ${hashFreq[property]}`%></p>
+                <% } %>
+                </div>  
+            </div>
+        </div>
+    </div>
+   <%  } %>
+
+    <% for (let i = 0; i < cluckslist.length; i++) { %>
+    <div class="row w-45">
+      <% let cluck = cluckslist[i]; %>
+      <div class="col-sm-12 w-25">
+      </div>
+      <div class="col-sm-6">
+        <div class="card text-center ">
+          <div class="card-body">
+            <h5 class="card-title">
+              <img src="/images/1f414.svg" alt="" width="30px" height="30px" />
+              <%= cluck.username + "     " + cluck.created_at%>
+            </h5>
+            <p class="card-text"><%= cluck.content %></p>
+          </div>
+          <div class=text-center>
+            <img src="<%= cluck.image_url %>" class="card-img-bottom " style="width: 400px" />
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>
+  <%}%>
+<% } %>
+  <%- include('./partials/footer') %>

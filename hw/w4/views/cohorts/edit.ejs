@@ -1,0 +1,40 @@
+<%- include("../partials/header") %>
+
+<% if(cohort) {%>
+<% const id = cohort[0].id , members = cohort[0].members , name = cohort[0].name%>
+<form action="/cohorts/<%- id %>" style="width: 100%;" method="POST" id="editForm">
+  <input type="hidden" name="_method" value="PATCH" />
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title card-team-name">
+        <label class="form-check-label" for="name">
+          Team Name
+        </label>
+        <input type="text" class="form-control" id="name" name="name" value=" <%- name %>"/>
+      </h5>
+      <p class="card-text">
+        <label class="form-check-label" for="members">
+          Members
+        </label>
+        <textarea class="form-control" id="members" name="members" rows="4"><%- members %></textarea>
+      </p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+
+      <div class="form-group row style:" margin-top:40px">
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <button type="submit" id="btn" class="btn btn-outline-success btn-md center-block" Style="width: 49%;">Submit</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+ 
+</form>
+
+<% } %>

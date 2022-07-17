@@ -1,0 +1,41 @@
+<% if(cohort && "team-count" in cohort[0] === true && "number-per-team" in cohort[0] !== true) {%>
+    <% let result = [], 
+    count = 1, 
+    nameList = cohort[0].members.split(","), 
+    chunkSize = nameList.length/parseInt(cohort[0]["team-split-quantity"]), 
+    res = []%>
+    
+    <% 
+    for (var i = nameList.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * i);
+        var temp = nameList[i];
+        [nameList[i],nameList[j]] = [nameList[j],nameList[i]];
+    }
+   
+    for (let i = 0 ; i < nameList.length; i+=(chunkSize)) {
+        res.push(nameList.slice(i, i + chunkSize));
+     } %>
+
+    <div class="card">
+        <div class="card-body">
+        <div class="form-group row style:" margin-top:40px">
+            <h5 class="card-title"> #   &nbsp;&nbsp;&nbsp;&nbsp; Members</h5>
+            <div class="row">
+            <div class="col-sm-12 text-left">
+                <% for( let index = 0 ; index < res.length; index++){%>
+    
+                <p>
+                <%= count %>. &nbsp;
+                <%= res[index].toString() %>
+                </p>
+        
+            <% count++%>
+            <% }%>
+        </div>
+        </div>
+    
+        </div>
+    </div>
+    </div>
+
+<%}%>

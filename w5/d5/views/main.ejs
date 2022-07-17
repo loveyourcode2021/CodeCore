@@ -1,0 +1,34 @@
+<%- include("./partials/header.ejs") %>
+<% if(clucks === true && sign_in === true) {%>
+  <div class="container">
+    <div class="card">
+      <% for(let i = 0 ; i < clucksData.length ; i++) { 
+         let cluck = clucksData[i];  
+      %>
+      <div class="card-body">
+        <h5 class="card-title">
+          <img src="images/otherChicken.svg" alt="" width="30" height="25" />
+          <%= cluck.username + "------ " + cluck.createdAt%>
+        </h5>
+        <p class="card-text"><%= cluck.content %></p>
+      </div>
+      <div class="card-img-buttom">
+        <img src="<%= cluck.imageUrl %>" style="width: 300px" />
+      </div>
+      <% } %>
+    </div>
+  </div>
+<%} else {%>
+<form action="/sign_in" method="POST">
+  <div class="form-row align-items-center">
+    <label for="username" class="form-label">Username</label>
+    <input type="text" class="form-control" 
+       name="username"
+      id="username"
+      placeholder="e.g. Madam Welminster"
+    />
+    <button type="submit" class="btn btn-primary">Sign In</button>
+  </div>
+</form>
+<%}%>
+<%- include ("./partials/footer.ejs") %>

@@ -1,0 +1,7 @@
+directory
+express.static
+bootstarp
+type
+<% %>
+and <%- %>
+<textarea type="text" id="message" name="message" col="60" row="5"></textarea>

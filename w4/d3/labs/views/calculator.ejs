@@ -1,0 +1,50 @@
+<% 
+  const ids = 
+  [
+    {
+        "input1":"input1",
+        "symbol" :"symbol",
+        "value" : "+",
+        "input2":"input2"
+    },
+    {
+        "input1":"input1",
+        "symbol" :"symbol",
+        "value" : "-",
+        "input2":"input2"
+    },
+    {
+        "input1":"input1",
+        "symbol" :"symbol",
+        "value" : "/",
+        "input2":"input2"
+    },
+    {
+        "input1":"input1",
+        "symbol" :"symbol",
+        "value" :"*",
+        "input2":"input2"
+    }
+    ]
+%>
+
+<%- include('./partials/header.ejs') %>
+<form class="form-inline" action="/calculator">
+    <% for ( let x of ids) { %>
+
+    <div class="input-group mb-2 mr-sm-2">
+        <input type="text" class="form-control mb-2 mr-sm-2" id="<%- x.input1 %>" name="<%- x.input1 %>" >
+        <div class="input-group-prepend">
+            <div class="input-group-text  mb-2 mr-sm-2"><%- x.value %></div>
+        </div>
+        <input type="hidden"  id="<%- x.symbol %>" name="<%- x.symbol %>" value="<%- x.value %>">
+        <input type="text" class="form-control mb-2 mr-sm-2" id="<%- x.input2 %>" name="<%- x.input2 %>">
+        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+        <% if(operator === x.value && operator !== undefined) {%>
+            <div class="form-control mb-3 mr-sm-3"><%- result %></div>
+        <%  } %>
+        <div
+    </div>
+    <%  } %>
+</form>
+<%- include('./partials/footer.ejs') %>

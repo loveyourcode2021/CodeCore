@@ -1,0 +1,17 @@
+<% include ('./partials/header.ejs')%>
+<% if(person_name === undefined) {%> 
+<form action="/random_person">
+  <div class="form-group">
+    <label for="person_name">Type</label>
+    <textarea class="form-control" id="person_name" name="person_name" rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<% } else { %> 
+  <h2> <%- person_name %> </h2>
+  <form action="/random_person">
+    <button type="submit" class="btn btn-primary">GoBack</button>
+  </form>
+<% } %> 
+
+  <% include ('./partials/footer.ejs')%>
