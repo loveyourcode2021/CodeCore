@@ -1,0 +1,21 @@
+<%- include("../partials/header.ejs") %> <% if (isSignIn) { %>
+<div class="card">
+
+      <div class="card-body">
+        <form action="/clucks/new" method="POST">
+          <div class="mb-3">
+            <label for="content" name="content" class="form-label">Content</label>
+            <textarea class="form-control" name="content" id="content" rows="5" placeholder="whatchoo cluckin' 'bout?"></textarea>
+          </div>
+          <div class="mb-3" >
+            <label for="image_url" class="form-label">Image Url</label>
+            <input type="text" name="image_url" class="form-control" id="image_url" placeholder="https://i.imgur.com/qM6KaEy.gifv" />
+            <input type="submit" class="btn btn-secondary" value="Cluck!"></input>
+          </div>
+        </form>
+      </div>
+
+</div>
+<% } else { %>
+<h1>Please sign in before clucking.</h1>
+<% } %> <%- include("../partials/footer.ejs") %>
