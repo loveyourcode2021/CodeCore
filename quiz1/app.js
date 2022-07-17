@@ -26,7 +26,7 @@ const home_router = require("./routes/home")
 app.use("/", home_router)
 const cluck_router = require("./routes/clucks")
 app.use("/clucks", cluck_router)
-const PORT = 9900
+const PORT = 9999
 const DOMAIN  = 'localhost'
 app.listen(PORT, DOMAIN, () => {
     console.log(`We are listen at http://${DOMAIN}:${PORT}`)

@@ -13,27 +13,32 @@ router.get("/", (req, res) => {
       .orderBy("created_at", "desc")
       .then((data) => {
         result = ""
-        data.forEach((element) => {
-            result+= element.content.toString()
-        })
-        console.log(result)
-        var freqMap = {};
-        result.match(/#[\p{L}]+/ugi).forEach(function(w) {
-            if (!freqMap[w]) {
-                freqMap[w] = 0;
-            }
-            freqMap[w] += 1;
-        });
-        const hash_length = Object.keys(freqMap).length
-
-       
-
-        if(hash_length>0)
+      
+        console.log(data)
+        if(data.length > 0)
         {
-            res.render('main',{isSignIn: isSignIn, cluckslist: data, isClucks : data.length>0, username:req.cookies.username||"", hashFreq: freqMap, hash_length: hash_length})
-        }else{
-            res.render('main',{isSignIn: isSignIn, cluckslist: data, isClucks : data.length>0, username:req.cookies.username||"", hash_length: 0})
+            data.forEach((element) => {
+              result+= element.content.toString()
+          })
+          var freqMap = {};
+          result.match(/#[\p{L}]+/ugi).forEach(function(w) {
+              if (!freqMap[w]) {
+                  freqMap[w] = 0;
+              }
+              freqMap[w] += 1;
+          });
+          const hash_length = Object.keys(freqMap).length
+  
+         
+  
+          if(hash_length>0)
+          {
+              res.render('main',{isSignIn: isSignIn, cluckslist: data, isClucks : data.length>0, username:req.cookies.username||"", hashFreq: freqMap, hash_length: hash_length})
+          }else{
+              res.render('main',{isSignIn: isSignIn, cluckslist: data, isClucks : data.length>0, username:req.cookies.username||"", hash_length: 0})
+          }
         }
+        res.render('main',{isSignIn: isSignIn, cluckslist: data, isClucks : data.length>0, username:req.cookies.username||"", hash_length: 0})
       });
    
 });
