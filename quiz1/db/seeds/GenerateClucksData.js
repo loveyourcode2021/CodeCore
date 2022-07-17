@@ -30,7 +30,9 @@ exports.seed = async function(knex) {
     })
     return knex('clucks').insert(cohorts)
   })
-};
+}; 
+
+// this code will do
 
 
 

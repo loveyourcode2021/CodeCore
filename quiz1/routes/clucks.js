@@ -15,8 +15,7 @@ router.get("/", (req, res) => {
         result = ""
       
         console.log(data)
-        if(data.length > 0)
-        {
+   
             data.forEach((element) => {
               result+= element.content.toString()
           })
@@ -37,8 +36,7 @@ router.get("/", (req, res) => {
           }else{
               res.render('main',{isSignIn: isSignIn, cluckslist: data, isClucks : data.length>0, username:req.cookies.username||"", hash_length: 0})
           }
-        }
-        res.render('main',{isSignIn: isSignIn, cluckslist: data, isClucks : data.length>0, username:req.cookies.username||"", hash_length: 0})
+    
       });
    
 });
