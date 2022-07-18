@@ -1,0 +1,9 @@
+
+<%= render "form" %>
+<% if @post.errors.any? %>
+  <ul>
+    <%  @answer.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
