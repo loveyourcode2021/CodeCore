@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 Post.destroy_all
 Comment.destroy_all
-
+Faker::Config.random = Random.new(60)
 40.times do
    
     created_at = Faker::Date.backward(days: 0)
@@ -15,16 +15,18 @@ Comment.destroy_all
 
     p = Post.create(
         title: Faker::Company.industry,
-        body: Faker::Lorem.words(number: 50),
+        body: Faker::Internet.email+Faker::Internet.email,
         created_at: created_at,
         updated_at: created_at,
       )
+    p "hello"
     if p.valid?
         rand(1..5).times do
+          
           created_at = Faker::Date.backward(days: 0)
           posted_at = Faker::Date.backward(days: 0)
             Comment.create(
-              body: Faker::Lorem.words(number: 50), 
+              body: Faker::Company.bs+Faker::Internet.email, 
               created_at: created_at,
               updated_at: created_at,
               post: p)
