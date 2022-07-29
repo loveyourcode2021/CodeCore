@@ -1,0 +1,49 @@
+
+
+
+    <h1><%= @post.title %></h1>
+    <p><%= @post.body%></p>
+    <p>
+    <small>Posted:<%= time_ago_in_words(@post.created_at) %> ago by <%= @post.user.name%></small>
+    </p>
+    <% if can? :crud, @post %>
+    <div class="btn-group">
+        <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-outline-primary btn-md " %>
+        <%= button_to "Delete", post_path(@post), method: :delete, class: 'btn btn-outline-primary btn-md',form: { data: { turbo_confirm: "Are you sure?" } }  %>
+    </div>
+    <% end %>
+    <hr>
+
+<%= form_with(model: [@post, @comment]) do |f| %>  <div>
+    <%= f.label :body, class: "form-label"   %>
+    <%= f.text_area :body, class: "form-control"   %>
+  </div>
+  <%= f.submit "Comments", class: "btn btn-outline-primary btn-md " %>
+<% end %>   
+
+
+
+<% if @comment.errors.any? %>
+  <ul>
+    <%  @comment.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<% @comments.each do |comment| %>
+<%= comment.body %>
+
+
+  <% if can? :crud, comment %>
+      <div class="box-container">
+        <div class="boxes">Commented <%= time_ago_in_words(comment.created_at) %> ago</div>
+        <div class="boxes" style="position: relative; top: -3px;"><%= button_to "Delete", post_comment_path(@post, comment), method: :delete, class: "btn btn-link btn-sm link",form: { data: { turbo_confirm: "Are you sure?" } } %> </div>
+      </div>
+  <% end %>
+
+<% end %>
+ 
+
+
