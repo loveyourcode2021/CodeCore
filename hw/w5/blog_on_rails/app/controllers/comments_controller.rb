@@ -1,11 +1,11 @@
 class CommentsController < ApplicationController
 
     before_action :find_post
-    def show
-        @comment = Comment.new params.require(:comment).permit(:body)
-        @comment.post = @post
-        redirect_to post_path(@post)
+    def index
+        p "------------INDEX"
+        @posts = Post.order(created_at: :DESC)
     end
+
     def create
         p "COMMENT--------Create"
         @comment = Comment.new params.require(:comment).permit(:body)
@@ -20,6 +20,23 @@ class CommentsController < ApplicationController
         end
     end
 
+
+    def show
+        p "------------SHOW"
+        @comment = Comment.new params.require(:comment).permit(:body)
+        @comment.post = @post
+    end
+
+    def edit
+    end
+    def update
+        p "COMMENT---------update"
+        if @post.update( params.require(:post).permit(:title, :body))
+            redirect_to post_path(@post)
+        else
+            render :edit
+        end
+    end
     def destroy
         p "COMMENT---------DESTROY"
         @comment =    Comment.find params[:id]
@@ -32,4 +49,7 @@ class CommentsController < ApplicationController
     def find_post
         @post = Post.find params[:post_id]
     end
+    def post_params
+        params.require(:post).permit(:title,:body)
+   end
 end
