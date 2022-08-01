@@ -1,0 +1,35 @@
+<header class="navbar-custom">
+    <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand navbar-custom" href="/"> <img src="/images/main_chicken.svg" width="80" height="60"/> </a>
+            <ul class="navbar-nav ml-auto navbar-custom">
+                <%if(isSignIn === false){%>
+                <li class="nav-item active navbar-custom">
+                   
+                </li>
+                <%}else{%>
+                
+                <%}%>
+                <li class="nav-item navbar-custom  btn-custom">
+                    <a class="btn btn-secondary " type="button" href="/clucks/new">Clucks</a>
+                </li>
+                <%if(isSignIn === false){%>
+                <li class="nav-item navbar-custom  btn-custom">
+                    <a class="btn btn-secondary type="button" href="/sign_in">Sign in</a>
+                </li>
+                <%}else{%>
+                    <li class="nav-item navbar-custom btn-custom">
+                        <p  type="text" style="font-size: 1.2em;"" class="text-center"><%= username %> &nbsp; &nbsp;</p>
+                    </li>
+                    <li class="nav-item navbar-custom btn-custom">
+                        <form action='/sign_out' method="POST" class="form-inline  ">
+                            
+                            <button type="submit" class='btn btn-secondary  '>Sign Out</button>
+                        </form>
+                    </li>
+                <%}%>
+            </ul>
+    </nav>
+    </div>
+    <hr>
+</header>

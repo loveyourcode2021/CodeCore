@@ -1,0 +1,11 @@
+<%- include("./partials/header.ejs") %>
+<% for( let task of todoList ) {  %>
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%- task.title %></h5>
+      <p class="card-text"><%- task.description%></p>
+    </div>
+  </div>
+<% } %>
+<%- include("./partials/footer.ejs") %>
+    

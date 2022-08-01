@@ -1,0 +1,36 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/survey">Survey</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/hello_world">Hello World</a>
+            </li>
+            <% if(username) { %>
+              <li class="nav-item active">
+                <span> Hello, <%-  username  %>!</span>
+                <form action="/sign_out" method="POST">
+                    <button type="submit" class="btn btn-outline-dark"> Sign out</button>
+                </form>
+              </li>
+            <% } else { %>  
+              <li class="nav-item active">
+                <form action="/sign_in" method="POST" class="form-inline">
+                    <input class="form-control mr-2" id="username" name="username" placeholder="Username" type="text">
+                    <button type="submit" class="btn btn-outline-dark"> Sign In</button>
+                </form>
+              </li>
+            <% } %> 
+          </ul>
+        </div>
+      </nav>
+</header>

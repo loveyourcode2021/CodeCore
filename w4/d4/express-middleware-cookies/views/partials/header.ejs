@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+
+    
+  </head>
+  <body>
+    <nav>
+      <a href="/">Home</a>
+      |
+      <a href="/preferred_language">Preferred Language</a>
+      |
+      <a href="/tasks">Tasks</a>
+      |
+      <a href="/tasks/new">New Task</a>
+      |
+      <% if(username) {%>
+        <span class='navbar-text text-dark'>
+            👩‍💻 <%=username%>
+        </span>
+        <form action='/sign_out' method='POST'>
+            <button type='sign-out' class='btn btn-outline-dark'>Sign Out</button>
+    
+        <%} else {%>
+        <form action='/sign_in' method='POST' class='form-inline'>
+            <input class='form-control mr-2' name='username' placeholder="Username">
+            <button type='submit' class='btn btn-outline-dark'>Sign In</button>
+            </form>
+        <%}%>
+    </nav>
+  </body>
+</html>
