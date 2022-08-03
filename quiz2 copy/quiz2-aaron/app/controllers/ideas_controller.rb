@@ -48,9 +48,11 @@ class IdeasController < ApplicationController
     end
 
     def destroy
-        like = current_user.likes.find params[:id]
+        p "Destory ideas----"
+
        
-        if   like.destory || @idea&.destroy 
+        if   @idea&.destroy 
+            p "Destory ideas good!----"
             flash[:notice] = "Idea deleted"
             redirect_to ideas_path
         else
