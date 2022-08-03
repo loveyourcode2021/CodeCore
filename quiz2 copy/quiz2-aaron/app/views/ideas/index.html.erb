@@ -1,0 +1,32 @@
+<div class="cards">
+
+<% @ideas.each do |idea| %>
+  <div class="card">
+     <h4 class="card-title"><%= link_to idea.title, idea_path(idea),  class: "link"%></h4>
+      <p class="card-body"><%= idea.description %></p>
+
+
+    <div class="card-footer ">
+        <div class="box-container">
+
+     
+      <small class="boxes">Created by: <%= idea.user&.full_name || 'DELETED'%></small>
+      
+      <% if can?(:like,idea)%>
+        <small class="boxes" style="position: relative; right: -6px;">
+        <% like = idea.likes.find_by(user: current_user) %>
+        <% if like.present? %>
+      
+        <%= button_to "Unlike", like_path(like, @where = "index"), method: :delete, class: 'btn btn-outline-primary btn-md' %>
+        <% else %>
+         <%= button_to "Like", idea_likes_path(idea, @where = "index"), method: :post, class: 'btn btn-outline-primary btn-md',form: { data: { turbo_confirm: "Are you sure?" } }  %>
+        <% end %>
+        </small>
+    <% end %>
+    <small class="boxes"  style="position: relative; right: -70%;">Liked by: <%= idea.likers.count %> people</small>
+     </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="cards">
