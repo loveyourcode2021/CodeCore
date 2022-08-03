@@ -1,0 +1,31 @@
+<%- include("./partials/header.ejs") %>
+    <h1>Survey</h1>
+    <form action="\submit">
+        <div>
+        <label for="fullName">What is your name?</label>
+        <input type="text" id="fullName" name="fullName">
+        </div>
+
+        <div>
+            <label for="favouriteColour">What is your favorite Color</label>
+            <input type="text" id="favouriteColour" name="favouriteColour">
+        </div>
+       
+        <div>
+            <label for="message">What is on your mind?</label>
+            <textarea type="text" id="message" name="message" ></textarea>
+        </div>
+        
+       
+        <div>
+            <label for="weekDays"> What is your favourite day of the week?</label>
+            <br/>
+            <% const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] %>
+            <% for (let option of days) { %>
+                <input type="radio" name="favouriteDay" id="<%- option %>" value="<%- option %>">
+                <label for="<%- option %>" ><%- option %></label>
+            <% } %> 
+        </div>
+        <input type="submit" value="send">
+    </form>
+<%- include("./partials/footer.ejs") %>

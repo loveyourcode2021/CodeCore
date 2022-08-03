@@ -1,0 +1,141 @@
+@import url(reset.css);
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: repeat(6, 1fr);
+    border: 1px solid #ff1f;
+}
+.title {
+    font-size: 2em;
+    font-weight: 800;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%; 
+    object-fit: scale-down;
+}
+
+.text-1 {
+    grid-column: 2;
+}
+
+.image1 {
+    grid-column: 1;
+}
+
+.phone_portait {
+    grid-column: 2;
+    grid-row: 2/ span 2;
+}
+
+.image2 {
+    grid-column: 3;
+}
+
+.text-2 {
+    grid-column: 3;
+    grid-row: 3;
+    padding-left: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.image3 {
+    grid-column: 1;
+    grid-row: 4;
+}
+
+.image3 {
+    grid-column: 1;
+    grid-row: 4;
+}
+
+.image4 {
+    grid-column: 4;
+    grid-row: 4;
+}
+
+.phone_landscape {
+    grid-column: 2 / span 2;
+    grid-row: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    grid-column: 2 / span 2;
+    grid-row: 6;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media(max-width: 600px) {
+    .grid-container {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: repeat(10, 1fr);
+    }
+
+    .text-1 {
+        grid-column: 1;
+        grid-row:1
+    }
+
+    .image1 {
+        grid-column: 1;
+        grid-row:2
+    }
+
+    .phone_portait {
+        grid-column: 1;
+        grid-row: 3 ;
+    }
+
+    .image2 {
+        grid-column: 1;
+        grid-row: 4 ;
+    }
+
+    .text-2 {
+        grid-column: 1;
+        grid-row: 6;
+        padding-left: 1em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .image3 {
+        grid-column: 1;
+        grid-row: 7;
+    }
+
+
+    .image4 {
+        grid-column: 1;
+        grid-row: 8;
+    }
+
+    .phone_landscape {
+        grid-column: 1;
+        grid-row: 9;
+    }
+
+    .button {
+        grid-column: 1;
+        grid-row: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+
+}
+

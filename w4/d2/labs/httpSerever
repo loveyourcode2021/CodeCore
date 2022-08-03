@@ -1,0 +1,69 @@
+const http = require('http');
+const url = require('url');
+const options = {
+  hostname: '',
+  port: 443,
+  path: '/greeting',
+  method: 'GET',
+};
+
+const converter = (input) => (input * 9/5) + 3
+const gradeCalculator = (input) => {
+    var finalGrades = ["A","B","C","D","F"];
+    let color = ""
+    if(input >= 90){
+		finalGrade = finalGrades[0];
+		color = "green";
+	} else if(input >= 80 && input < 90) {
+		finalGrade = finalGrades[1];
+		color = "teal";
+	} else if(input >= 70 && input < 80) {
+		finalGrade = finalGrades[2];
+		color = "blue";
+	} else if(input >= 60 && input < 70) {
+		finalGrade = finalGrades[3];
+		color = "orange";
+	} else {
+		finalGrade = finalGrades[4];
+		color = "red";
+	}
+    return [finalGrade, color]
+
+}
+
+const web = `<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+    </title>
+  </head>
+  <body>
+  <h1>`;
+const generateHTTP = (userInput) => {
+    if(userInput.temp){
+       let result = userInput.temp
+        return web+`Converted From ${userInput.temp} Cel to ${result} Fel`+`</h1></body></html>`
+    }else if(userInput.name){
+      let result = userInput.name
+       return web+`Hello ${result}`+`</h1></body></html>`
+   }else{
+        return web+`Welcome`+`</h1></body></html>`
+    }
+}
+const server = http.createServer(function (request, response) {
+  const params = url.parse(request.url, true).query;
+  response.writeHead(200, { 'Content-Type': 'text/html'});
+  response.write(generateHTTP(params))
+  response.end()
+})
+
+http.request(options, ( response) => {
+  console.log(`statusCode: ${res.statusCode}`);
+  response.writeHead(200, { 'Content-Type': 'text/html'});
+  response.write(generateHTTP(params))
+  response.end();
+});
+
+server.listen(3000);
+
+console.log("Server is running on port: 3000");

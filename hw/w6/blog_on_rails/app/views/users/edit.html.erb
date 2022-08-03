@@ -1,0 +1,21 @@
+<h1>Edit User</h1>
+
+<% if @user.errors.any? %>
+<p>
+<%= @user.errors.full_messages.join(", ")%>
+</p>
+<% end %>
+
+
+<%= form_with model: @user, url: user_path(current_user), method: :patch, local: true do |f| %>
+<div>
+ <%= f.label :name%>
+ <%= f.text_field :name,  :value => current_user.name%>
+</div>
+<div>
+ <%= f.label :email %>
+ <%= f.text_field :email ,  :value => current_user.email%>
+</div>
+  <%= f.submit "Edit User",  class: "btn btn-outline-primary btn-md "%>
+  <%= link_to "Chage Password", edit_password_user_path(current_user), class: "btn btn-outline-primary btn-md " %>
+<% end %>
