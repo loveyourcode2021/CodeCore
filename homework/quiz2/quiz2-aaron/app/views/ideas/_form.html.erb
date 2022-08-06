@@ -1,0 +1,13 @@
+<%= form_with model: @idea do |f|%>
+<div>
+    <%= f.label :title, class: "form-label"%>
+    <%= f.text_field :title, class: "form-control" %>
+</div>
+<div>
+    <%= f.label :description, class: "form-label" %>
+    <%= f.text_area :description,  class: 'form-control'%>
+</div>
+<div>
+    <%= f.submit "Create Ideas", class: "btn btn-outline-primary btn-md" %>
+</div>
+<% end %>
